@@ -33,13 +33,15 @@ import fromToDestination from './components/FromToDestination';
 import LoginScreen from './components/LoginScreen';
 import analytics from '@react-native-firebase/analytics';
 import { addEventListener } from "@react-native-community/netinfo";
+import ChatList from './components/ChatList';
+import ChatScreen from './components/ChatScreen';
 
 AppRegistry.registerComponent(tasksNAtive, () => App);
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator()
 
-function App(): JSX.Element {
+function App() {
 
   const [isLoading, setIsLoading] = useState(false);
   const [login,  setLogin] = useState(false)
@@ -95,6 +97,8 @@ function App(): JSX.Element {
           <Stack.Screen name='ImagePicker' component={ImagePicker} />
           <Stack.Screen name='MapPicker' component={MapPicker} />
           <Stack.Screen name='AccessContact' component={AccessContacts}/>
+          <Stack.Screen name='ChatList' component={ChatList}/>
+          <Stack.Screen name='ChatScreen' component={ChatScreen}/>
           {/* <Stack.Screen name='SourceToDestination' component={fromToDestination}/> */}
         </Stack.Navigator>
         : <LoginScreen setLogin={setLogin}/>

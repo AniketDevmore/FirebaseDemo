@@ -3,8 +3,10 @@ import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import analytics from '@react-native-firebase/analytics';
 import crashlytics from '@react-native-firebase/crashlytics';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import firestore from '@react-native-firebase/firestore';
 
-const MainPage = (): JSX.Element => {
+const MainPage = () => {
 
     const navigation:any = useNavigation()
     // const [enabled, setEnabled] = useState(crashlytics().isCrashlyticsCollectionEnabled);
@@ -37,20 +39,28 @@ const MainPage = (): JSX.Element => {
         navigation.navigate('SendSMS')
     }
 
+    const chatClickHandler = () => {
+        console.log('chatClickHandler------------>>')
+        navigation.navigate('ChatList')
+    }
+
      return (
         <View style={styles.outerContainer}>
            <View style={styles.innetView}> 
            <TouchableOpacity style={styles.textBtnComp} onPress={imageclickHandle}>
                 <Text style={styles.text}>Capture Image</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.textBtnComp} onPress={mapclickHandle}>
+            {/* <TouchableOpacity style={styles.textBtnComp} onPress={mapclickHandle}>
                 <Text style={styles.text}>Access Map</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.textBtnComp} onPress={fomToDestinationClickHandler}>
+            </TouchableOpacity> */}
+            {/* <TouchableOpacity style={styles.textBtnComp} onPress={fomToDestinationClickHandler}>
                 <Text style={styles.text}>From To Map</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.textBtnComp} onPress={contactClickHandler}>
                 <Text style={styles.text}>Access Contact</Text>
+            </TouchableOpacity> */}
+            <TouchableOpacity style={styles.textBtnComp} onPress={chatClickHandler}>
+                <Text style={styles.text}>Chat</Text>
             </TouchableOpacity>
            
            </View>
